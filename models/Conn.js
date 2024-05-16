@@ -1,10 +1,10 @@
 //Importando o Sequelize
-    const sequelize = require('sequelize')
+    const Sequelize = require('sequelize')
 
 //Configuração do sequelize
     const sequelize = new Sequelize({
         dialect:'sqlite',
-        storage:'/home/igor/Documentos/Curso_NodeJS/AppExpress/models/banco.db',
+        storage:'./helpdesk.db',
     })
 //Exportando módulos do sequelize
     module.exports = {
@@ -12,8 +12,8 @@
         sequelize: sequelize
     }   
 //Autenticando o banco
-    sequelize.authenticate().then(function(){
+    /*sequelize.authenticate().then(function(){
         console.log('Conectado ao banco com sucesso')
     }).catch(function(erro){
         console.log('Erro'+erro)
-    })
+    })*/

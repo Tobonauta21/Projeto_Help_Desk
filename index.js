@@ -5,6 +5,7 @@
     const {engine} = require('express-handlebars')
     const bodyparser = require('body-parser')
     const path = require('path')
+    const admin = require('./routes/Admin')
 //Configurações
     //Middleware
         /*app.use(function(req,res,next){
@@ -26,9 +27,10 @@
     //Public
         app.use(express.static(path.join(__dirname,'public')))
 //Rotas
-    app.get('/',(rqe,res)=>{
+    app.get('/',(req,res)=>{
         res.render('index')
     })
+    app.use('/admin',admin)
 //Subindo o servidor
     app.listen(3000,(req,res)=>{
         console.log('Servidor ouvindo em localhost:3000')
