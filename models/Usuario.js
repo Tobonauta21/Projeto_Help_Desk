@@ -8,6 +8,7 @@ const db = require('./Conn')
         nasc:{type:db.Sequelize.STRING,allowNull:false},
         cidade:{type:db.Sequelize.STRING,allowNull:false},
         email:{type:db.Sequelize.STRING,allowNull:false},
+        senha:{type:db.Sequelize.STRING,allowNull:false},
     })
 
 //Sincronizando a tabela com o banco 
