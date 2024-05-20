@@ -8,9 +8,13 @@
     const ExcelJS = require('exceljs')
 //Rotas
     router.get('/register',(req,res)=>{
-        res.render('registroUser')
+        res.render('src/registroUser')
     })
 
+    router.get('/login',(req,res)=>{
+        res.render('src/userLogin')
+    })
+    
     router.post('/registering',async(req,res)=>{
         try{
             const erros = []
@@ -24,7 +28,7 @@
             }
 
             if(erros.length > 0){
-                res.render('/user/register',{erros:erros})
+                res.render('/src/register',{erros:erros})
             }else{
 
                 const salt = await bcrypt.genSalt(10)
@@ -74,7 +78,7 @@
             });
     
             // Adicionar o registro ao arquivo Excel
-            await adicionarRegistroAoExcel('C:\\Users\\aluno\\Desktop\\Igor\\Projeto_Help_Desk\\routes\\data.xlsx', 'igor', ocorrencias, empresa, 'ABERTO');
+            //await adicionarRegistroAoExcel('C:\\Users\\aluno\\Desktop\\Igor\\Projeto_Help_Desk\\routes\\data.xlsx', 'igor', ocorrencias, empresa, 'ABERTO');
     
             // Se tudo ocorrer bem, enviar uma resposta de sucesso
             console.log('Chamado registrado com sucesso!');
@@ -86,18 +90,18 @@
     });
     
     // Função para adicionar registro ao arquivo Excel
-    async function adicionarRegistroAoExcel(filePath, ...dados) {
+    /*async function adicionarRegistroAoExcel(filePath, ...dados) {
         try {
-            const workbook = new ExcelJS.Workbook();
-            await workbook.xlsx.readFile(filePath);
-            const worksheet = workbook.getWorksheet(2);
-            worksheet.addRow(dados);
-            await workbook.xlsx.writeFile(filePath);
+            const workbook = new ExcelJS.Workbook()
+            await workbook.xlsx.readFile(filePath)
+            const worksheet = workbook.getWorksheet(2)
+            worksheet.addRow(dados)
+            await workbook.xlsx.writeFile(filePath)
         } catch (error) {
-            console.log('Ocorreu o seguinte erro ao adicionar registro ao Excel -> ' + error);
-            throw error; // Rejeitar a Promise para que o erro seja capturado pelo catch no pedido POST
+            console.log('Ocorreu o seguinte erro ao adicionar registro ao Excel -> ' + error)
+            throw error
         }
-    }
+    }*/
 
 //Exportando rotas
     module.exports = router

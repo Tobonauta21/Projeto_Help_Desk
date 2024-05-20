@@ -5,7 +5,7 @@
     const bcrypt = require('bcryptjs')
 //Rotas
     router.get('/register',(req,res)=>{
-        res.render('registroAdmin')
+        res.render('admin/registroAdmin')
     })
 
     router.post('/registering',async(req,res)=>{
