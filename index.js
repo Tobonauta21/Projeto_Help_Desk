@@ -6,6 +6,7 @@
     const bodyparser = require('body-parser')
     const path = require('path')
     const admin = require('./routes/Admin')
+    const user = require('./routes/User')
 //Configurações
     //Middleware
         /*app.use(function(req,res,next){
@@ -31,6 +32,7 @@
         res.render('index')
     })
     app.use('/admin',admin)
+    app.use('/user',user)
 //Subindo o servidor
     app.listen(3000,(req,res)=>{
         console.log('Servidor ouvindo em localhost:3000')

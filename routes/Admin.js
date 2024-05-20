@@ -48,6 +48,10 @@
         }
     })
 
+    router.get('/call',(req,res)=>{
+        
+    })
+
 
 
 //Exportando módulo
