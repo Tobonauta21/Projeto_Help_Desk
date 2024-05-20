@@ -7,6 +7,7 @@
         codigo:{type:db.Sequelize.STRING,allowNull:false},
         empresa:{type:db.Sequelize.STRING,allowNull:false},
         status:{type:db.Sequelize.STRING,allowNull:false},
+        prioridade:{type:db.Sequelize.STRING,allowNull:false},
     })
 
     Call.belongsTo(Ocorrencia,{foreigKey:'ocorrenciaId'})

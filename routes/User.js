@@ -69,7 +69,8 @@
                 codigo: ocorrencias,
                 empresa: empresa,
                 status: 'Aberto',
-                ocorrenciaId: ocorrencias
+                ocorrenciaId: ocorrencias,
+                prioridade:req.body.prioridade
             });
     
             // Adicionar o registro ao arquivo Excel
