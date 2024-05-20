@@ -6,9 +6,6 @@ Terá um crossover com PowerBi para mostrar gráficos de
 ===============================================================
 
 ========NOTAS DE ATUALIZAÇÃO===================================
-Modelado a tabela  de chamados;
-Criado tela de registro de chamados;
-Rotas de registro de chamados também 
-está registrando no word;
-adicionado prioridades aos chamados;
+Tela de login feita;
+Front tela de login feito;
 ===============================================================

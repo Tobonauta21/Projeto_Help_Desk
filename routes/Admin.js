@@ -54,6 +54,26 @@
         
     })
 
+    router.post('/login',(req,res)=>{
+        Admin.findOne({where:{email:req.body.email}}).then((user)=>{
+            if(!user){
+                req.flash('error_msg','Usuário não encontrado')
+                res.redirect('/login')
+            }else{
+                bcrypt.compare(req.body.senha,user.senha,(error,match)=>{
+                    if(match){
+                        //Fazer um token para usuário poder navegar no sistema
+                        req.flash('success_msg','Bem-vindo')
+                        res.redirect('/admin/home')
+                    }else{
+                        req.flash('error_msg','Senha inválida'+error)
+                        res.redirect('/login')
+                    }
+                })
+            }
+        })
+    })
+
 
 
 //Exportando módulo

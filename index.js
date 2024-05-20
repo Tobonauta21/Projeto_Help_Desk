@@ -40,6 +40,10 @@
     app.get('/',(req,res)=>{
         res.render('index')
     })
+
+    app.get('/login',(req,res)=>{
+        res.render('admin/loginAdmin')
+    })
     app.use('/admin',admin)
     app.use('/user',user)
 //Subindo o servidor
