@@ -9,7 +9,7 @@
     })
 
 //Sincronizando a tabela com o banco 
-    //Admin.sync({force:true})
+     //Admin.sync({force:true})
 
 //Exportando módulos
     module.exports = Admin

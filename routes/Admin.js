@@ -21,7 +21,8 @@
             }
 
             if(erros.length > 0){
-                res.render('/admin/register',{erros:erros})
+                req.flash('error_msg','Erro ao criar perfil adm')
+                res.redirect('/admin/register')
             }else{
 
                 const salt = await bcrypt.genSalt(10)
@@ -30,7 +31,8 @@
                 const admin = await Admin.findOne({where:{email:req.body.email}})
 
                 if(admin){
-                    //Colocar mensagem req flash de erro aqui
+                    req.flash('error_msg','Erro ao criar perfil adm')
+                    res.redirect('/admin/register')
                 }else{
                     await Admin.create({
                         nome:req.body.nome,
@@ -38,7 +40,7 @@
                         senha:hashSenha
                     })
 
-                    //Colocar mensagem flash de sucesso aqui
+                    req.flash('success_msg','Perfil de adm criado com sucesso!')
                     res.redirect('/admin/register')
                 }
 

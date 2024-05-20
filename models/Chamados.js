@@ -1,13 +1,17 @@
 //Importando conexão
     const db = require('./Conn')
-    
+    const Ocorrencia = require('./Ocorrencia')
 //Criando a tabela
     const Call = db.sequelize.define('Call',{
-        nome:{type:db.Sequelize.STRING,allowNull:false},
-        email:{type:db.Sequelize.STRING,allowNull:false},
-        senha:{type:db.Sequelize.STRING,allowNull:false},
+        nomeUser:{type:db.Sequelize.STRING,allowNull:false},
+        codigo:{type:db.Sequelize.STRING,allowNull:false},
+        empresa:{type:db.Sequelize.STRING,allowNull:false},
+        status:{type:db.Sequelize.STRING,allowNull:false},
     })
 
+    Call.belongsTo(Ocorrencia,{foreigKey:'ocorrenciaId'})
+
 //Sincronização
-    Call.sync({force:true})
+    //Call.sync({force:true})
 //Exportando a tabela
+    module.exports = Call
