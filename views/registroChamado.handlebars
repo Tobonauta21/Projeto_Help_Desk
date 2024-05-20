@@ -1,0 +1,10 @@
+<h1>Aqui é o registro de chamados</h1>
+<form action="/user/regis_call" method="post">
+    <select id="ocorrencias" name="ocorrencias">
+        {{#each ocorrencias}}
+            <option value="{{id}}">{{status}}</option>
+        {{/each}}
+    </select>
+    <input type="text" placeholder="Empresa" name="empresa">
+    <input type="submit" value="Enviar">
+</form>

@@ -8,8 +8,8 @@ ficos de todos os chamados
 ===========================
 
 ========NOTAS DE ATUALIZAÇÃO========
-Fiz com que o sequelize também se 
-conectasse com o mysql para poder
-programar em outros lugares, agora
-modelar a tabela de chamados
+Modelado a tabela  de chamados;
+Criado tela de registro de chamados;
+Rotas de registro de chamados também 
+está registrando no word
 ====================================

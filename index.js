@@ -7,14 +7,23 @@
     const path = require('path')
     const admin = require('./routes/Admin')
     const user = require('./routes/User')
+    const session = require('express-session')
+    const flash = require('connect-flash')
 //Configurações
+    //Session
+        app.use(session({
+            secret: 'nodejs',
+            resave: true,
+            saveUninitialized: true
+        }))
+        app.use(flash())
     //Middleware
-        /*app.use(function(req,res,next){
+        app.use(function(req,res,next){
             res.locals.success_msg = req.flash('success_msg')
             res.locals.error_msg = req.flash('error_msg') 
             res.locals.error = req.flash('error')
             next()
-        })*/
+        })
 
     //BodyParser
         app.use(bodyparser.urlencoded({extended:true}))
@@ -41,7 +50,7 @@
 
 
 
-    /*    
+/*    
 const ExcelJS = require('exceljs');
 
 //Carrega o arquivo Excel existente
