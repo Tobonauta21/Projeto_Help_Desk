@@ -3,7 +3,11 @@
     const router = express.Router()
     const Admin = require('../models/Admin')
     const bcrypt = require('bcryptjs')
+    const Chamado = require('../models/Chamados')
 //Rotas
+    router.get('/home',(req,res)=>{
+
+    })
     router.get('/register',(req,res)=>{
         res.render('admin/registroAdmin')
     })
@@ -50,8 +54,12 @@
         }
     })
 
-    router.get('/call',(req,res)=>{
-        
+     router.get('/call',(req,res)=>{
+        Chamado.findAll().then((ocorrencias)=>{
+            res.render('admin/home',{ocorrencias:ocorrencias})
+        }).catch((erro)=>{
+            console.log('Ocorreu o seguinte erro->'+erro)
+        })
     })
 
     router.post('/login',(req,res)=>{
