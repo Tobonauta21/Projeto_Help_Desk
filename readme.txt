@@ -6,6 +6,9 @@ Terá um crossover com PowerBi para mostrar gráficos de
 ===============================================================
 
 ========NOTAS DE ATUALIZAÇÃO===================================
-Tela de login feita;
-Front tela de login feito;
+Tela de login feita (20/05); 
+Front tela de login feito(20/05);
+Home do admin mostrando chamados (21/05);
+-Fazer front da home admin (colocar uma navbar e uma sidebar)
+-Gerar relatório em excel
 ===============================================================

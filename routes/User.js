@@ -57,7 +57,7 @@
 
     router.get('/call',(req,res)=>{
         Ocorrencia.findAll().then((ocorrencias)=>{
-            res.render('registroChamado',{ocorrencias:ocorrencias})
+            res.render('src/registroChamado',{ocorrencias:ocorrencias})
         }).catch((erro)=>{
             console.log('Ocorreu o seguinte erro->'+erro)
         })
