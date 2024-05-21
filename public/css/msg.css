@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
+
+.success_msg{
+    background-color: green;
+    font-family:"Ubuntu Sans", sans-serif; ;
+    border-color: rgb(11, 119, 51);
+    font-size: 18px;
+    text-align: center;
+    color: white;
+}
+
+.error_msg{
+    background-color: red;
+    font-family:"Ubuntu Sans", sans-serif; ;
+    border:solid rgb(119, 4, 4) 1.7px;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+}

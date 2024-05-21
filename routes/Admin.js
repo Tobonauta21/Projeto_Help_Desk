@@ -25,8 +25,8 @@
             }
 
             if(erros.length > 0){
-                req.flash('error_msg','Erro ao criar perfil adm')
-                res.redirect('/admin/register')
+                req.flash('error_msg','Erro ao criar perfil adm'+erros)
+                res.render('admin/register',{error:erros})
             }else{
 
                 const salt = await bcrypt.genSalt(10)
