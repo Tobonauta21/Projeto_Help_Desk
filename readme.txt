@@ -5,7 +5,7 @@ Terá um crossover com PowerBi para mostrar gráficos de
  todos os chamados
 ===============================================================
 
-========NOTAS DE ATUALIZAÇÃO===================================
+======================NOTAS DE ATUALIZAÇÃO======================
 Tela de login feita (20/05); 
 Front tela de login feito(20/05);
 Home do admin mostrando chamados (21/05);
@@ -14,7 +14,9 @@ front end registro admin feito(21/05)
 sidebar admin feito(21/05)
 -Fazer front da home admin (colocar uma navbar e uma sidebar)
 -Cards finalizados(22/05)
-
+-Terminar a home do usuário
+-Fazer sistema de sessão
+-Autenticação para admin
 -Fazer as rotas para alterar os chamdos nos cards
 -Gerar relatório em excel
-===============================================================
+==================================================================

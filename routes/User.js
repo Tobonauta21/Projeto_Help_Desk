@@ -15,6 +15,17 @@
         res.render('src/userLogin')
     })
     
+    router.get('/home',(req,res)=>{
+        Chamado.findAll().then((call)=>{
+            res.render('src/home',{call:call})
+        }).catch((error)=>{
+            req.flash('error_msg','Ocorreu um erro, tente novamente!')
+            res.redirect('/user/home')
+            console.log(error)
+        })
+        
+    })
+    
     router.post('/registering',async(req,res)=>{
         try{
             const erros = []
