@@ -67,7 +67,6 @@
         try {
             const { ocorrencias, empresa } = req.body;
     
-            // Criar o registro de chamado no banco de dados
             await Chamado.create({
                 nomeUser: 'Igor', // Certifique-se de ajustar isso para o usuário atual
                 codigo: ocorrencias,
@@ -80,9 +79,8 @@
             // Adicionar o registro ao arquivo Excel
             //await adicionarRegistroAoExcel('C:\\Users\\aluno\\Desktop\\Igor\\Projeto_Help_Desk\\routes\\data.xlsx', 'igor', ocorrencias, empresa, 'ABERTO');
     
-            // Se tudo ocorrer bem, enviar uma resposta de sucesso
-            console.log('Chamado registrado com sucesso!');
-            res.status(200).send('Chamado registrado com sucesso!');
+            req.flash('success_msg','Chamado criado com sucesso!')
+            res.redirect('/user/call')
         } catch (error) {
             console.log('Ocorreu o seguinte erro -> ' + error);
             res.status(500).send('Ocorreu um erro ao registrar o chamado.');

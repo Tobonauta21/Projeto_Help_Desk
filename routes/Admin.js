@@ -4,6 +4,7 @@
     const Admin = require('../models/Admin')
     const bcrypt = require('bcryptjs')
     const Chamado = require('../models/Chamados')
+    const Ocorrencia = require('../models/Ocorrencia')
 //Rotas
     router.get('/register',(req,res)=>{
         res.render('admin/registroAdmin')
@@ -64,6 +65,20 @@
         }
         
     })
+
+    router.get('/ocorrencia',(req,res)=>{
+        res.render('admin/registrarOcorrencia')
+    })
+
+    router.post('/ocorrenciar',(req,res)=>{
+        Ocorrencia.create({
+            status:req.body.descricao
+        })
+
+        req.flash('success_msg','Ocorrencia registrada com sucesso')
+        res.redirect('/admin/ocorrencia')
+    })
+
 
     router.post('/login',(req,res)=>{
         Admin.findOne({where:{email:req.body.email}}).then((user)=>{

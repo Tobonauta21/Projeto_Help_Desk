@@ -40,7 +40,14 @@
         </div>
     </div>
 </nav>
-
+{{#each ocorrencias}}
+    <h2>{{nomeUser}}</h2>
+    <h2>{{codigo}}</h2>
+    <h2>{{empresa}}</h2>
+    <h2>{{status}}</h2>
+    <h2>{{prioridade}}</h2>
+    <h2>{{createdAt}}</h2>
+{{/each}}
 <script>
     const navBar = document.querySelector('nav'),
           menuBtns = document.querySelectorAll('.menu-icon')
