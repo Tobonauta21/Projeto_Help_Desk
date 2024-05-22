@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="/css/login.css">
+<br><div id="radio">
+  <label>
+    <input type="radio" name="formSelector" value="form1" checked onclick="showForm('form1')">Administrador
+  </label>
+  <label>
+    <input type="radio" name="formSelector" value="form2" onclick="showForm('form2')">Usuário
+  </label>
+</div>
+  <div class="center" id="form1">
+    <h1>Registre-se</h1>
+    <form action="/admin/registering" method="post" >
+        <div class="txt_field">
+            <input type="text" required name="nome">
+            <label for="nome">Nome completo</label>
+        </div>
+        <div class="txt_field">
+            <input type="text" required name="empresa">
+            <label for="empresa">Empresa</label>
+        </div>
+        <div class="txt_field">
+            <input type="text" required name="cidade">
+            <label for="cidade">Cidade</label>
+        </div>
+        <div class="txt_field">
+            <input type="text" required name="email">
+            <label for="username">Email</label>
+        </div>
+        <div class="txt_field">
+            <input type="password" required name="senha">
+            <label for="senha">Senha</label>
+        </div>
+        <div class="txt_field">
+            <input type="password" required name="csenha">
+            <label for="csenha">Confirme sua senha</label>
+        </div>
+        <div class="txt_field">
+            <input type="password" required name="confirm">
+            <label for="confirm">Código de Confirmação</label>
+        </div>
+        <input type="submit" value="Entrar"></br>
+    </form>
+</div>
+<div class="center" id="form2">
+    <h1>Registre-se</h1>
+    <form action="/user/registering" method="post">
+        <div class="txt_field">
+            <input type="text" required name="nome">
+            <label for="nome">Nome completo</label>
+        </div>
+        <div class="txt_field">
+            <input type="text" required name="empresa">
+            <label for="empresa">Empresa</label>
+        </div>
+        <div class="txt_field">
+            <input type="text" required name="cidade">
+            <label for="cidade">Cidade</label>
+        </div>
+        <div class="txt_field">
+            <input type="text" required name="nasc">
+            <label for="nasc">Data de Nascimento</label>
+        </div>
+        <div class="txt_field">
+            <input type="text" required name="email">
+            <label for="username">Email</label>
+        </div>
+        <div class="txt_field">
+            <input type="password" required name="senha">
+            <label for="senha">Senha</label>
+        </div>
+        <div class="txt_field">
+            <input type="password" required name="csenha">
+            <label for="csenha">Confirme sua senha</label>
+        </div>
+        <input type="submit" value="Entrar"></br>
+    </form>
+</div>
+
+
+
+
+
+
+
+<script>
+  function showForm(formId) {
+    document.getElementById('form1').style.display = formId === 'form1' ? 'block' : 'none';
+    document.getElementById('form2').style.display = formId === 'form2' ? 'block' : 'none';
+  }
+</script>

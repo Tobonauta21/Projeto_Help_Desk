@@ -42,7 +42,7 @@
     })
 
     app.get('/login',(req,res)=>{
-        res.render('admin/loginAdmin')
+        res.render('register')
     })
     app.use('/admin',admin)
     app.use('/user',user)

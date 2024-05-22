@@ -5,9 +5,6 @@
     const bcrypt = require('bcryptjs')
     const Chamado = require('../models/Chamados')
 //Rotas
-    router.get('/home',(req,res)=>{
-
-    })
     router.get('/register',(req,res)=>{
         res.render('admin/registroAdmin')
     })
@@ -54,12 +51,18 @@
         }
     })
 
-     router.get('/call',(req,res)=>{
-        Chamado.findAll().then((ocorrencias)=>{
-            res.render('admin/home',{ocorrencias:ocorrencias})
-        }).catch((erro)=>{
-            console.log('Ocorreu o seguinte erro->'+erro)
-        })
+     router.get('/home',(req,res)=>{
+
+        try{
+            Chamado.findAll().then((ocorrencias)=>{
+                res.render('admin/home',{ocorrencias:ocorrencias})
+            }).catch((erro)=>{
+                console.log('Ocorreu o seguinte erro->'+erro)
+            })
+        }catch(error){
+            console.log(error)
+        }
+        
     })
 
     router.post('/login',(req,res)=>{

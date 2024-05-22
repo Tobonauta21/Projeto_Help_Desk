@@ -1,7 +1,53 @@
-{{#each ocorrencias}}
-    <h1>{{empresa}}</h1>
-    <h2>Prioridade:{{prioridade}}</h2>
-    <span>Autor:{{nomeUser}}</span><br>
-    <span>Estado:{{status}}</span>
-    <h3>Aberto em: {{createdAt}}</h3>
-{{/each}}
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="/css/sidebar.css">
+<nav>
+    <div class="logo">
+        <i class='bx bx-menu menu-icon'></i>
+        <span class="logo-name">HelpDesk</span>
+    </div>
+    <div class="sidebar">
+        <div class="logo">
+        <i class='bx bx-menu menu-icon'></i>
+        <span class="logo-name">HelpDesk</span>
+    </div>
+            <div class="sidebar-content">
+            <ul class="lists">
+                <li class="list">
+                    <a href="" class="nav-link">
+                        <i class='bx bxs-home icon'></i>
+                        <span class="link">  Dashboard</span>
+                    </a>
+                </li>
+                 <li class="list">
+                    <a href="" class="nav-link">
+                        <i class='bx bx-bar-chart icon'></i>
+                        <span class="link">Gerar Relatório</span>
+                    </a>
+                </li>
+                 <li class="list">
+                    <a href="" class="nav-link">
+                        <i class='bx bxs-user-check icon' ></i>
+                        <span class="link">Checar Usuários</span>
+                    </a>
+                </li>
+                 <li class="list">
+                    <a href="" class="nav-link">
+                        <i class='bx bx-exit icon'></i>
+                        <span class="link">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const navBar = document.querySelector('nav'),
+          menuBtns = document.querySelectorAll('.menu-icon')
+
+    menuBtns.forEach((menuBtn)=>{
+        menuBtn.addEventListener('click',()=>{
+            navBar.classList.toggle('open')
+        })
+    })
+</script>
