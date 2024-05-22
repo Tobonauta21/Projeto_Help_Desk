@@ -13,5 +13,7 @@ Mensagens flash front-end feito(21/05);
 front end registro admin feito(21/05)
 sidebar admin feito(21/05)
 -Fazer front da home admin (colocar uma navbar e uma sidebar)
+-Terminar os cards(22/05)
+-Fazer as rotas para alterar os chamdos nos cards
 -Gerar relatório em excel
 ===============================================================
