@@ -40,30 +40,3 @@
         </div>
     </div>
 </nav>
-<div class="card-container">
-    {{#each ocorrencias}}
-    <div class="card">
-        <img src="/img/logo.jpg" alt="">
-        <div class="card-content">
-            <h3><i class='bx bxs-buildings'></i>{{empresa}}</h3>
-            <p><i class='bx bxs-user-badge' ></i>Usuário:{{nomeUser}}</p>
-            <p><i class='bx bxs-info-circle'></i>Proridade:{{prioridade}}</p>
-            <p><i class='bx bx-barcode'></i>Código:{{codigo}}</p>
-            <p><i class='bx bx-stats'></i>Estado:{{status}}</p>
-            <a href="" class="btn">Fechar Chamado</a><br>
-            <a href="" class="btn">Alterar Chamado</a>
-        </div>
-    </div> 
-    {{/each}} 
-
-</div>
-<script>
-    const navBar = document.querySelector('nav'),
-          menuBtns = document.querySelectorAll('.menu-icon')
-
-    menuBtns.forEach((menuBtn)=>{
-        menuBtn.addEventListener('click',()=>{
-            navBar.classList.toggle('open')
-        })
-    })
-</script>

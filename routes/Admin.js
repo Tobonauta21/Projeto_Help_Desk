@@ -5,6 +5,7 @@
     const bcrypt = require('bcryptjs')
     const Chamado = require('../models/Chamados')
     const Ocorrencia = require('../models/Ocorrencia')
+    const Usuario = require('../models/Usuario')
 //Rotas
     router.get('/register',(req,res)=>{
         res.render('admin/registroAdmin')
@@ -97,6 +98,15 @@
                     }
                 })
             }
+        })
+    })
+
+    router.get('/users',(req,res)=>{
+        Usuario.findAll().then((user)=>{
+            res.render('admin/usersPage',{user:user})
+        }).catch((error)=>{
+            req.flash('error_msg','Ocorreu um erro, tente novamente!')
+            console.log(error)
         })
     })
 

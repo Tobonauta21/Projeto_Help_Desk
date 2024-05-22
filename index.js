@@ -41,7 +41,7 @@
         res.render('index')
     })
 
-    app.get('/login',(req,res)=>{
+    app.get('/register',(req,res)=>{
         res.render('register')
     })
     app.use('/admin',admin)

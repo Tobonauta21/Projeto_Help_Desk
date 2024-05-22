@@ -42,11 +42,14 @@
                     await User.create({
                         nome:req.body.nome,
                         email:req.body.email,
+                        cidade:req.body.cidade,
+                        nasc:req.body.nasc,
+                        empresa:req.body.empresa,
                         senha:hashSenha
                     })
 
                     //Colocar mensagem flash de sucesso aqui
-                    res.redirect('/user/register')
+                    res.redirect('/register')
                 }
 
             }

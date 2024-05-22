@@ -1,0 +1,18 @@
+{{>_navbar}}
+<div class="card-container">
+    {{#each user}}
+    <div class="card">
+        <img src="/img/logo.jpg" alt="">
+        <div class="card-content">
+            <h3><i class='bx bxs-buildings'></i>{{empresa}}</h3>
+            <p><i class='bx bxs-user-badge' ></i>Usuário:{{nome}}</p>
+            <p><i class='bx bxs-info-circle'></i>Proridade:{{cidade}}</p>
+            <p><i class='bx bx-barcode'></i>Código:{{email}}</p>
+            <p><i class='bx bx-stats'></i>Estado:{{createdAt}}</p>
+            <a href="" class="btn">Fechar Chamado</a><br>
+            <a href="" class="btn">Alterar Chamado</a>
+        </div>
+    </div> 
+    {{/each}} 
+
+</div>
