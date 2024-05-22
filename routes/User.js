@@ -48,7 +48,8 @@
                 const user = await User.findOne({where:{email:req.body.email}})
 
                 if(user){
-                    //Colocar mensagem req flash de erro aqui
+                    req.flash('error_msg','Usuário já existe!')
+                    res.redirect('/login')
                 }else{
                     await User.create({
                         nome:req.body.nome,
@@ -100,6 +101,10 @@
             res.status(500).send('Ocorreu um erro ao registrar o chamado.');
         }
     });
+
+    router.post('/login',(req,res)=>{
+        console.log('login usuario')
+    })
     
     // Função para adicionar registro ao arquivo Excel
     /*async function adicionarRegistroAoExcel(filePath, ...dados) {

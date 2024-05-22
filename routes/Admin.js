@@ -35,7 +35,7 @@
 
                 if(admin){
                     req.flash('error_msg','Erro ao criar perfil adm')
-                    res.redirect('/admin/register')
+                    res.redirect('/register')
                 }else{
                     await Admin.create({
                         nome:req.body.nome,
@@ -44,7 +44,7 @@
                     })
 
                     req.flash('success_msg','Perfil de adm criado com sucesso!')
-                    res.redirect('/admin/register')
+                    res.redirect('/register')
                 }
 
             }
@@ -81,25 +81,32 @@
     })
 
 
-    router.post('/login',(req,res)=>{
-        Admin.findOne({where:{email:req.body.email}}).then((user)=>{
-            if(!user){
-                req.flash('error_msg','Usuário não encontrado')
-                res.redirect('/login')
-            }else{
-                bcrypt.compare(req.body.senha,user.senha,(error,match)=>{
-                    if(match){
-                        //Fazer um token para usuário poder navegar no sistema
-                        req.flash('success_msg','Bem-vindo')
-                        res.redirect('/admin/home')
-                    }else{
-                        req.flash('error_msg','Senha inválida'+error)
-                        res.redirect('/login')
-                    }
-                })
+    router.post('/login', (req, res) => {
+        Admin.findOne({ where: { email: req.body.email } })
+          .then(user => {
+            if (!user) {
+              req.flash('error_msg', 'Usuário não encontrado');
+              res.redirect('/login');
+            } else {
+              bcrypt.compare(req.body.senha, user.senha, (err, match) => {
+                if (match) {
+                  req.session.userId = user.id;
+                  req.flash('success_msg', 'Bem-vindo');
+                  res.redirect('/admin/home');
+                  console.log(req.session.userId)
+                } else {
+                  req.flash('error_msg', 'Senha inválida');
+                  res.redirect('/login');
+                }
+              });
             }
-        })
-    })
+          })
+          .catch(err => {
+            console.error(err);
+            req.flash('error_msg', 'Ocorreu um erro ao tentar fazer login');
+            res.redirect('/login');
+          });
+      });
 
     router.get('/users',(req,res)=>{
         Usuario.findAll().then((user)=>{

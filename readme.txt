@@ -15,7 +15,7 @@ sidebar admin feito(21/05)
 -Fazer front da home admin (colocar uma navbar e uma sidebar)
 -Cards finalizados(22/05)
 -Terminar a home do usuário
--Fazer sistema de sessão
+-Fazer sistema de sessão (Sistema de sessão do admin feito)
 -Autenticação para admin
 -Fazer as rotas para alterar os chamdos nos cards
 -Gerar relatório em excel

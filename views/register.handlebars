@@ -1,90 +1,101 @@
-<link rel="stylesheet" href="/css/login.css">
-<br><div id="radio">
-  <label>
-    <input type="radio" name="formSelector" value="form1" checked onclick="showForm('form1')">Administrador
-  </label>
-  <label>
-    <input type="radio" name="formSelector" value="form2" onclick="showForm('form2')">Usuário
-  </label>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/login.css">
+  <title>Registre-se</title>
+</head>
+<body>
+  <div id="radio">
+    <label>
+      <input type="radio" name="formSelector" value="form1" checked onclick="showForm('form1')">Usuário
+    </label>
+    <label>
+      <input type="radio" name="formSelector" value="form2" onclick="showForm('form2')">Administrador
+    </label>
+  </div>
+
   <div class="center" id="form1">
     <h1>Registre-se</h1>
-    <form action="/admin/registering" method="post" >
-        <div class="txt_field">
-            <input type="text" required name="nome">
-            <label for="nome">Nome completo</label>
-        </div>
-        <div class="txt_field">
-            <input type="text" required name="empresa">
-            <label for="empresa">Empresa</label>
-        </div>
-        <div class="txt_field">
-            <input type="text" required name="cidade">
-            <label for="cidade">Cidade</label>
-        </div>
-        <div class="txt_field">
-            <input type="text" required name="email">
-            <label for="username">Email</label>
-        </div>
-        <div class="txt_field">
-            <input type="password" required name="senha">
-            <label for="senha">Senha</label>
-        </div>
-        <div class="txt_field">
-            <input type="password" required name="csenha">
-            <label for="csenha">Confirme sua senha</label>
-        </div>
-        <div class="txt_field">
-            <input type="password" required name="confirm">
-            <label for="confirm">Código de Confirmação</label>
-        </div>
-        <input type="submit" value="Entrar"></br>
+    <form action="/admin/registering" method="post">
+      <div class="txt_field">
+        <input type="text" required name="nome">
+        <label for="nome">Nome completo</label>
+      </div>
+      <div class="txt_field">
+        <input type="text" required name="empresa">
+        <label for="empresa">Empresa</label>
+      </div>
+      <div class="txt_field">
+        <input type="text" required name="cidade">
+        <label for="cidade">Cidade</label>
+      </div>
+      <div class="txt_field">
+        <input type="text" required name="email">
+        <label for="username">Email</label>
+      </div>
+      <div class="txt_field">
+        <input type="password" required name="senha">
+        <label for="senha">Senha</label>
+      </div>
+      <div class="txt_field">
+        <input type="password" required name="csenha">
+        <label for="csenha">Confirme sua senha</label>
+      </div>
+      <div class="txt_field">
+        <input type="password" required name="confirm">
+        <label for="confirm">Código de Confirmação</label>
+      </div>
+      <input type="submit" value="Entrar">
     </form>
-</div>
-<div class="center" id="form2">
+  </div>
+
+  <div class="center" id="form2" style="display: none;">
     <h1>Registre-se</h1>
     <form action="/user/registering" method="post">
-        <div class="txt_field">
-            <input type="text" required name="nome">
-            <label for="nome">Nome completo</label>
-        </div>
-        <div class="txt_field">
-            <input type="text" required name="empresa">
-            <label for="empresa">Empresa</label>
-        </div>
-        <div class="txt_field">
-            <input type="text" required name="cidade">
-            <label for="cidade">Cidade</label>
-        </div>
-        <div class="txt_field">
-            <input type="text" required name="nasc">
-            <label for="nasc">Data de Nascimento</label>
-        </div>
-        <div class="txt_field">
-            <input type="text" required name="email">
-            <label for="username">Email</label>
-        </div>
-        <div class="txt_field">
-            <input type="password" required name="senha">
-            <label for="senha">Senha</label>
-        </div>
-        <div class="txt_field">
-            <input type="password" required name="csenha">
-            <label for="csenha">Confirme sua senha</label>
-        </div>
-        <input type="submit" value="Entrar"></br>
+      <div class="txt_field">
+        <input type="text" required name="nome">
+        <label for="nome">Nome completo</label>
+      </div>
+      <div class="txt_field">
+        <input type="text" required name="empresa">
+        <label for="empresa">Empresa</label>
+      </div>
+      <div class="txt_field">
+        <input type="text" required name="cidade">
+        <label for="cidade">Cidade</label>
+      </div>
+      <div class="txt_field">
+        <input type="text" required name="nasc">
+        <label for="nasc">Data de Nascimento</label>
+      </div>
+      <div class="txt_field">
+        <input type="text" required name="email">
+        <label for="username">Email</label>
+      </div>
+      <div class="txt_field">
+        <input type="password" required name="senha">
+        <label for="senha">Senha</label>
+      </div>
+      <div class="txt_field">
+        <input type="password" required name="csenha">
+        <label for="csenha">Confirme sua senha</label>
+      </div>
+      <input type="submit" value="Entrar">
     </form>
-</div>
+  </div>
 
+  <script>
+    function showForm(formId) {
+      document.getElementById('form1').style.display = formId === 'form1' ? 'block' : 'none';
+      document.getElementById('form2').style.display = formId === 'form2' ? 'block' : 'none';
+    }
 
-
-
-
-
-
-<script>
-  function showForm(formId) {
-    document.getElementById('form1').style.display = formId === 'form1' ? 'block' : 'none';
-    document.getElementById('form2').style.display = formId === 'form2' ? 'block' : 'none';
-  }
-</script>
+    // Inicializar o estado dos formulários corretamente
+    document.addEventListener('DOMContentLoaded', function() {
+      showForm(document.querySelector('input[name="formSelector"]:checked').value);
+    });
+  </script>
+</body>
+</html>
