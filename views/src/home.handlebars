@@ -1,1 +1,14 @@
 {{>_navbar}}
+<div class="card-container">
+    {{#each call}}
+    <div class="card">
+        <img src="/img/logo.jpg" alt="">
+        <div class="card-content">
+            <p><i class='bx bxs-info-circle'></i>Proridade:{{prioridade}}</p>
+            <p><i class='bx bx-barcode'></i>Código:{{codigo}}</p>
+            <p><i class='bx bx-stats'></i>Estado:{{status}}</p>
+            <a href="/user/alter/{{id}}" class="btn">Alterar Chamado</a><br>
+        </div>
+    </div> 
+    {{/each}} 
+</div>

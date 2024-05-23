@@ -143,6 +143,22 @@
 
     })
     
+    router.get('/alter/:id',(req,res)=>{
+        try{
+            Chamado.findOne({where:{id:req.params.id}}).then(call=>{
+                res.render('src/alterarChamado',{call:call})
+            }).catch(err=>{
+                console.log(err)
+            })
+        }catch(err){
+            console.log(err)
+        }
+        
+    })
+
+    router.post('/altercall/:id',(req,res)=>{
+
+    })
     // Função para adicionar registro ao arquivo Excel
     /*async function adicionarRegistroAoExcel(filePath, ...dados) {
         try {

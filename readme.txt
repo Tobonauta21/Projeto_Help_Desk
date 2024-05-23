@@ -23,4 +23,5 @@ Colocar mensagens flash onde está marcado!
 -Fazer sistema de sessão (Sistema de sessão do admin feito)
 -Fazer as rotas para alterar os chamdos nos cards
 -Gerar relatório em excel
+-Talvez fazer uma função de notificações para os adm 
 ==================================================================
