@@ -49,21 +49,35 @@
 
             }
         }catch(error){
+            //Colocar mensagem flash aqui
             console.log('Erro ->'+error)
         }
     })
 
-     router.get('/home',(req,res)=>{
+    router.get('/home',(req,res)=>{
 
-        try{
-            Chamado.findAll().then((ocorrencias)=>{
-                res.render('admin/home',{ocorrencias:ocorrencias})
-            }).catch((erro)=>{
-                console.log('Ocorreu o seguinte erro->'+erro)
-            })
-        }catch(error){
-            console.log(error)
-        }
+        Admin.findOne({where:{id:req.session.userId}}).then(admin=>{
+            if(admin){
+                try{
+                    Chamado.findAll().then((ocorrencias)=>{
+                        res.render('admin/home',{ocorrencias:ocorrencias})
+                    }).catch((erro)=>{
+                        //Colocar mensagem flash aqui
+                        console.log('Ocorreu o seguinte erro->'+erro)
+                    })
+                }catch(error){
+                    //Colocar mensagem flash aqui
+                    console.log('erroraquió'+error)
+                }
+            }else{
+                req.flash('error_msg','Faça login para ter acesso a plataforma!')
+                res.redirect('/login')
+            }
+        }).catch(err =>{
+            //Colocar mensagem flash aqui
+            console.log('erro aqui ó '+err)
+        })
+        
         
     })
 
@@ -82,31 +96,29 @@
 
 
     router.post('/login', (req, res) => {
-        Admin.findOne({ where: { email: req.body.email } })
-          .then(user => {
+        Admin.findOne({ where: { email: req.body.email } }).then(user => {
             if (!user) {
-              req.flash('error_msg', 'Usuário não encontrado');
-              res.redirect('/login');
+              req.flash('error_msg', 'Usuário não encontrado')
+              res.redirect('/login')
             } else {
               bcrypt.compare(req.body.senha, user.senha, (err, match) => {
                 if (match) {
-                  req.session.userId = user.id;
-                  req.flash('success_msg', 'Bem-vindo');
-                  res.redirect('/admin/home');
+                  req.session.userId = user.id
+                  req.flash('success_msg', 'Bem-vindo')
+                  res.redirect('/admin/home')
                   console.log(req.session.userId)
                 } else {
-                  req.flash('error_msg', 'Senha inválida');
-                  res.redirect('/login');
+                  req.flash('error_msg', 'Senha inválida')
+                  res.redirect('/login')
                 }
-              });
+              })
             }
+          }).catch(err => {
+            console.error(err)
+            req.flash('error_msg', 'Ocorreu um erro ao tentar fazer login')
+            res.redirect('/login')
           })
-          .catch(err => {
-            console.error(err);
-            req.flash('error_msg', 'Ocorreu um erro ao tentar fazer login');
-            res.redirect('/login');
-          });
-      });
+      })
 
     router.get('/users',(req,res)=>{
         Usuario.findAll().then((user)=>{
@@ -115,6 +127,10 @@
             req.flash('error_msg','Ocorreu um erro, tente novamente!')
             console.log(error)
         })
+    })
+
+    router.get('/logoff',(req,res)=>{
+
     })
 
 

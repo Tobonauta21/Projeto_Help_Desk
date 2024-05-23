@@ -7,8 +7,9 @@
     <input type="radio" name="formSelector" value="form2" onclick="showForm('form2')">Usuário
   </label>
 </div>
+
   <div class="center" id="form1">
-    <h1>Login</h1>
+    <h1>Login Adm</h1>
     <form action="/admin/login" method="post" >
         <div class="txt_field">
             <input type="text" required name="email">
@@ -20,11 +21,30 @@
         </div>
         <input type="submit" value="Entrar"></br>
     </form>
-</div>
+  </div>
+  <div class="center" id="form2">
+    <h1>Login User</h1>
+    <form action="/user/login" method="post" >
+        <div class="txt_field">
+            <input type="text" required name="email">
+            <label for="username">Email</label>
+        </div>
+        <div class="txt_field">
+            <input type="password" required name="senha">
+            <label for="senha">Senha</label>
+        </div>
+        <input type="submit" value="Entrar"></br>
+    </form>
+  </div>
 
 <script>
   function showForm(formId) {
-    document.getElementById('form1').style.display = formId === 'form1' ? 'block' : 'none';
-    document.getElementById('form2').style.display = formId === 'form2' ? 'block' : 'none';
-  }
+      document.getElementById('form1').style.display = formId === 'form1' ? 'block' : 'none';
+      document.getElementById('form2').style.display = formId === 'form2' ? 'block' : 'none';
+    }
+
+    // Inicializar o estado dos formulários corretamente
+    document.addEventListener('DOMContentLoaded', function() {
+      showForm(document.querySelector('input[name="formSelector"]:checked').value);
+    });
 </script>

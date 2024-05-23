@@ -6,26 +6,8 @@
     const Ocorrencia = require('../models/Ocorrencia.js')
     const Chamado = require('../models/Chamados.js')
     const ExcelJS = require('exceljs')
-//Rotas
-    router.get('/register',(req,res)=>{
-        res.render('src/registroUser')
-    })
-
-    router.get('/login',(req,res)=>{
-        res.render('src/userLogin')
-    })
-    
-    router.get('/home',(req,res)=>{
-        Chamado.findAll().then((call)=>{
-            res.render('src/home',{call:call})
-        }).catch((error)=>{
-            req.flash('error_msg','Ocorreu um erro, tente novamente!')
-            res.redirect('/user/home')
-            console.log(error)
-        })
-        
-    })
-    
+    const Usuario = require('../models/Usuario.js')
+//Rotas    
     router.post('/registering',async(req,res)=>{
         try{
             const erros = []
@@ -74,36 +56,91 @@
         Ocorrencia.findAll().then((ocorrencias)=>{
             res.render('src/registroChamado',{ocorrencias:ocorrencias})
         }).catch((erro)=>{
+            //Colocar mensagem flash aqui
             console.log('Ocorreu o seguinte erro->'+erro)
         })
     })
 
     router.post('/regis_call', async (req, res) => {
-        try {
-            const { ocorrencias, empresa } = req.body;
-    
-            await Chamado.create({
-                nomeUser: 'Igor', // Certifique-se de ajustar isso para o usuário atual
-                codigo: ocorrencias,
-                empresa: empresa,
-                status: 'Aberto',
-                ocorrenciaId: ocorrencias,
-                prioridade:req.body.prioridade
-            });
-    
-            // Adicionar o registro ao arquivo Excel
-            //await adicionarRegistroAoExcel('C:\\Users\\aluno\\Desktop\\Igor\\Projeto_Help_Desk\\routes\\data.xlsx', 'igor', ocorrencias, empresa, 'ABERTO');
-    
-            req.flash('success_msg','Chamado criado com sucesso!')
-            res.redirect('/user/call')
-        } catch (error) {
-            console.log('Ocorreu o seguinte erro -> ' + error);
-            res.status(500).send('Ocorreu um erro ao registrar o chamado.');
+        try{
+             Usuario.findOne({where:{id:req.session.nuserId}}).then(urs=>{
+                Chamado.create({
+                    nomeUser:urs.nome,
+                    empresa:urs.empresa,
+                    codigo:req.body.ocorrencias,
+                    status:'Aberto',
+                    prioridade:req.body.prioridade,
+                    ocorrenciaId:req.body.ocorrencias
+                }).then(()=>{
+                    req.flash('success_msg','Chamado criado com sucesso!')
+                    res.redirect('/user/home')
+                }).catch(err=>{
+                    //Colocar mensagem flash aqui
+                    console.log(err)
+                })
+            }).catch(err=>{
+                //Colocar mensagem flash aqui
+                console.log(err)
+            })
+        }catch(err){
+            //Colocar mensagem flash aqui
+            console.log(err)
         }
-    });
+        
+    })
 
     router.post('/login',(req,res)=>{
-        console.log('login usuario')
+        try{
+            Usuario.findOne({where:{email:req.body.email}}).then(usr =>{
+                if(!usr){
+                    req.flash('Usuário não encontrado')
+                    res.redirect('/login')
+                }else{
+                    bcrypt.compare(req.body.senha,usr.senha,(err,match)=>{
+                        if(match){
+                            req.session.nuserId = usr.id
+                            res.redirect('/user/home')
+                            console.log(req.session.nuserId)
+                        }else{
+                            req.flash('error_msg','Oocrreu um erro ao tentar fazer login')
+                            res.redirect('/login')
+                            console.log(err)
+                        }
+                    })
+                }
+            }).catch(err =>{
+                //Colocar mensagem flash aqui
+                console.log(err)
+            })
+        }catch(err){
+            //Colocar mensagem flash aqui
+            console.log(err)
+        }
+    })
+
+    router.get('/home',(req,res)=>{
+
+        Usuario.findOne({where:{id:req.session.nuserId}}).then(usr=>{
+            if(usr){
+                try{
+                    Chamado.findAll({where:{nomeUser:usr.nome}}).then(call=>{
+                        res.render('src/home',{call:call})
+                    }).catch(err=>{
+                        console.log(err)
+                    })
+                }catch(err){
+                    //Colocar mensagem flash aqui
+                    console.log(err)
+                }
+            }else{
+                req.flash('error_msg','Faça login para ter acesso a plataforma!')
+                res.redirect('/login')
+            }
+        }).catch(err=>{
+            //Colocar mensagem flash aqui
+            console.log(err)
+        })
+
     })
     
     // Função para adicionar registro ao arquivo Excel
