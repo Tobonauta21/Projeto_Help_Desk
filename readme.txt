@@ -16,6 +16,7 @@ Fazer front da home admin (22/05)
 Cards finalizados(22/05)
 Autenticação para admin feito(23/05)
 Autenticação para user feito(23/05)
+Alteração de chamado para usuários feito(24/05)
 =====IMPORTANTE!!!!=====
 Colocar mensagens flash onde está marcado!
 ========================

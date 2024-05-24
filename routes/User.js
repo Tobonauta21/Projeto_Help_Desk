@@ -143,22 +143,42 @@
 
     })
     
-    router.get('/alter/:id',(req,res)=>{
+    router.get('/alter/:id',async(req,res)=>{
         try{
+            const ocr = await Ocorrencia.findAll();
             Chamado.findOne({where:{id:req.params.id}}).then(call=>{
-                res.render('src/alterarChamado',{call:call})
+                
+                res.render('src/alterarChamado',{call:call,ocr:ocr})
+
             }).catch(err=>{
                 console.log(err)
             })
         }catch(err){
             console.log(err)
         }
-        
     })
 
-    router.post('/altercall/:id',(req,res)=>{
-
-    })
+    router.post('/altercall/:id', async (req, res) => {
+        try {
+            const status = req.body.ocorrencias;
+            const callId = req.params.id;
+            const estado = req.body.estado
+            const prio = req.body.prioridade
+            // Atualize os campos 'codigo' e 'ocorrenciaId' onde 'id' for igual a 'callId'
+            await Chamado.update(
+                { codigo: status, ocorrenciaId: status,status:estado,prioridade:prio }, // Campos a serem atualizados
+                { where: { id: callId } } // Condição para a atualização
+            );
+    
+            req.flash('success_msg', 'Chamado alterado com sucesso!');
+            res.redirect('/user/home');
+        } catch (err) {
+            console.error(err);
+            req.flash('error_msg', 'Ocorreu um erro ao alterar o chamado');
+            res.redirect(`/alter/${callId}`);
+        }
+    });
+    
     // Função para adicionar registro ao arquivo Excel
     /*async function adicionarRegistroAoExcel(filePath, ...dados) {
         try {
