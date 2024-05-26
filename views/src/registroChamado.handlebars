@@ -1,15 +1,19 @@
-<h1>Aqui é o registro de chamados</h1>
+{{>_navbar}}
+<h1>Registre sua ocorrência</h1>
+<link rel="stylesheet" href="/css/registroEalteracao.css">
 <form action="/user/regis_call" method="post">
-    <select id="ocorrencias" name="ocorrencias">
+    <label for="ocorrencias">Tipo de ocorrência/Urgência</label>
+<div class="select-container">
+    <select class ="select-box" name="ocorrencias">
         {{#each ocorrencias}}
             <option value="{{id}}">{{status}}</option>
         {{/each}}
     </select>
-    <input type="text" placeholder="Empresa" name="empresa">
-    <select id="prioridade" name="prioridade">
-            <option value="alta">Urgente</option>
-            <option value="media">Mediano</option>
-            <option value="baixa">Leve</option>
+    <select class ="select-box" name="prioridade">
+        <option id="opt" value="alta">Urgente</option>
+        <option id="opt" value="media">Mediano</option>
+        <option id="opt" value="baixa">Leve</option>
     </select>
-    <input type="submit" value="Enviar">
+</div><br>
+    <input type="submit" value="Enviar" id="btn">
 </form>

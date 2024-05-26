@@ -2,15 +2,14 @@
 <div class="card-container">
     {{#each user}}
     <div class="card">
-        <img src="/img/logo.jpg" alt="">
+        <img src="/img/userLogo.png" alt="">
         <div class="card-content">
-            <h3><i class='bx bxs-buildings'></i>{{empresa}}</h3>
-            <p><i class='bx bxs-user-badge' ></i>Usuário:{{nome}}</p>
-            <p><i class='bx bxs-info-circle'></i>Proridade:{{cidade}}</p>
-            <p><i class='bx bx-barcode'></i>Código:{{email}}</p>
-            <p><i class='bx bx-stats'></i>Estado:{{createdAt}}</p>
-            <a href="" class="btn">Fechar Chamado</a><br>
-            <a href="" class="btn">Alterar Chamado</a>
+            <p><i class='bx bxs-user' ></i>Nome do usuáro Usuário:{{nome}}</p>
+            <p><i class='bx bxs-city'></i>Cidade:{{cidade}}</p>
+            <p><i class='bx bx-envelope' ></i></i>Email:{{email}}</p>
+            <p><i class='bx bxs-calendar'></i>Criou a conta em:{{createdAt}}</p>
+            <a href="" class="btn">Excluir Conta</a><br>
+            <a href="" class="btn">Alterar Dados</a>
         </div>
     </div> 
     {{/each}} 
