@@ -18,11 +18,11 @@ Autenticação para admin feito(23/05)
 Autenticação para user feito(23/05)
 Alteração de chamado para usuários feito(24/05)
 =====IMPORTANTE!!!!=====
-Colocar mensagens flash onde está marcado!
+Colocar mensagens flash onde está marcad- feito(26/05)
 ========================
--Terminar a home do usuário
--Fazer sistema de sessão (Sistema de sessão do admin feito)
--Fazer as rotas para alterar os chamdos nos cards
+-Terminar a home do usuário- feito (26/05)
+-Fazer sistema de sessão (Sistema de sessão do admin feito)- feito (26/05)
+-Fazer as rotas para alterar os chamdos nos cards-feito (26/05)
 -Gerar relatório em excel
 -Talvez fazer uma função de notificações para os adm 
 ==================================================================

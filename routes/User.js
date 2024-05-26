@@ -42,7 +42,7 @@
                         senha:hashSenha
                     })
 
-                    //Colocar mensagem flash de sucesso aqui
+                    req.flash('success_msg','Usuário registrado com sucesso!')
                     res.redirect('/register')
                 }
 
@@ -56,7 +56,8 @@
         Ocorrencia.findAll().then((ocorrencias)=>{
             res.render('src/registroChamado',{ocorrencias:ocorrencias})
         }).catch((erro)=>{
-            //Colocar mensagem flash aqui
+            req.flash('error_msg','Ocorreu um erro ao acessar a página!')
+            res.redirect('/login')
             console.log('Ocorreu o seguinte erro->'+erro)
         })
     })
@@ -74,17 +75,17 @@
                 }).then(()=>{
                     req.flash('success_msg','Chamado criado com sucesso!')
                     res.redirect('/user/home')
-                }).catch(err=>{
-                    //Colocar mensagem flash aqui
-                    console.log(err)
+                }).catch(err=>{    
+                req.flash('error_msg','Ocorreu um erro, por favor tente novamente!')
+                res.redirect('/login')
                 })
             }).catch(err=>{
-                //Colocar mensagem flash aqui
-                console.log(err)
+                req.flash('error_msg','Ocorreu um erro, por favor tente novamente!')
+                res.redirect('/login')
             })
         }catch(err){
-            //Colocar mensagem flash aqui
-            console.log(err)
+            req.flash('error_msg','Ocorreu um erro, por favor tente novamente!')
+            res.redirect('/login')
         }
         
     })
@@ -119,26 +120,26 @@
     })
 
     router.get('/home',(req,res)=>{
-
         Usuario.findOne({where:{id:req.session.nuserId}}).then(usr=>{
             if(usr){
                 try{
                     Chamado.findAll({where:{nomeUser:usr.nome}}).then(call=>{
                         res.render('src/home',{call:call})
                     }).catch(err=>{
-                        console.log(err)
+                        req.flash('error_msg','Ocorreu um erro ao acessar a plataforma!')
+                        res.redirect('/login')
                     })
                 }catch(err){
-                    //Colocar mensagem flash aqui
-                    console.log(err)
+                    req.flash('error_msg','Ocorreu um erro ao acessar a plataforma!')
+                    res.redirect('/login')
                 }
             }else{
                 req.flash('error_msg','Faça login para ter acesso a plataforma!')
                 res.redirect('/login')
             }
         }).catch(err=>{
-            //Colocar mensagem flash aqui
-            console.log(err)
+            req.flash('error_msg','Ocorreu um erro ao acessar a plataforma!')
+            res.redirect('/login')
         })
 
     })
