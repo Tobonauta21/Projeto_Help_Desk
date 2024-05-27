@@ -6,6 +6,8 @@
     const Chamado = require('../models/Chamados')
     const Ocorrencia = require('../models/Ocorrencia')
     const Usuario = require('../models/Usuario')
+    const Exceljs = require('exceljs')
+    const workbook = new Exceljs.Workbook();
 //Rotas
     router.get('/register',(req,res)=>{
         res.render('admin/registroAdmin')
@@ -132,6 +134,46 @@
     router.get('/logoff',(req,res)=>{
 
     })
+
+    router.get('/gerar_relatorio', async (req, res) => {
+        try {
+            // Crie um novo workbook Excel
+            const worksheet = workbook.addWorksheet('Ocorrencias');
+    
+            // Adicione as colunas ao planilha
+            worksheet.addRow(['id', 'Nome Usuário', 'Código', 'Empresa', 'Status', 'Prioridade', 'Criado em:', 'Alterado em:', 'Id Ocorrencia']);
+    
+            // Busque os chamados do banco de dados
+            const chamados = await Chamado.findAll();
+    
+            // Adicione os dados dos chamados à planilha
+            chamados.forEach(chamado => {
+                worksheet.addRow([
+                    chamado.id,
+                    chamado.nomeUser,
+                    chamado.codigo,
+                    chamado.empresa,
+                    chamado.status,
+                    chamado.prioridade,
+                    chamado.createdAt.toString(), // Converta a data para string
+                    chamado.updatedAt.toString(), // Converta a data para string
+                    chamado.ocorrenciaId
+                ]);
+            });
+    
+            // Escreva o workbook Excel na resposta HTTP
+            res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            res.setHeader('Content-Disposition', 'attachment; filename="ocorrencias.xlsx"');
+            await workbook.xlsx.write(res);
+    
+            // Envie uma mensagem de sucesso usando flash
+            req.flash('success_msg', 'Relatório gerado com sucesso!');
+        } catch (err) {
+            console.error('Ocorreu o seguinte erro:', err);
+            // Envie uma mensagem de erro usando flash
+            req.flash('error_msg', 'Ocorreu um erro ao gerar o relatório!!!');
+        } 
+    });
 
 
 
