@@ -137,16 +137,13 @@
 
     router.get('/gerar_relatorio', async (req, res) => {
         try {
-            // Crie um novo workbook Excel
-            const worksheet = workbook.addWorksheet('Ocorrencias');
+            
+            const worksheet = workbook.addWorksheet('Ocorrencias')
+           
+            worksheet.addRow(['id', 'Nome Usuário', 'Código', 'Empresa', 'Status', 'Prioridade', 'Criado em:', 'Alterado em:', 'Id Ocorrencia'])
+            
+            const chamados = await Chamado.findAll()
     
-            // Adicione as colunas ao planilha
-            worksheet.addRow(['id', 'Nome Usuário', 'Código', 'Empresa', 'Status', 'Prioridade', 'Criado em:', 'Alterado em:', 'Id Ocorrencia']);
-    
-            // Busque os chamados do banco de dados
-            const chamados = await Chamado.findAll();
-    
-            // Adicione os dados dos chamados à planilha
             chamados.forEach(chamado => {
                 worksheet.addRow([
                     chamado.id,
@@ -155,27 +152,22 @@
                     chamado.empresa,
                     chamado.status,
                     chamado.prioridade,
-                    chamado.createdAt.toString(), // Converta a data para string
-                    chamado.updatedAt.toString(), // Converta a data para string
+                    chamado.createdAt.toString(), 
+                    chamado.updatedAt.toString(), 
                     chamado.ocorrenciaId
-                ]);
-            });
+                ])
+            })
     
-            // Escreva o workbook Excel na resposta HTTP
-            res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-            res.setHeader('Content-Disposition', 'attachment; filename="ocorrencias.xlsx"');
-            await workbook.xlsx.write(res);
+            res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            res.setHeader('Content-Disposition', 'attachment; filename="ocorrencias.xlsx"')
+            await workbook.xlsx.write(res)
     
-            // Envie uma mensagem de sucesso usando flash
-            req.flash('success_msg', 'Relatório gerado com sucesso!');
+            req.flash('success_msg', 'Relatório gerado com sucesso!')
         } catch (err) {
-            console.error('Ocorreu o seguinte erro:', err);
-            // Envie uma mensagem de erro usando flash
-            req.flash('error_msg', 'Ocorreu um erro ao gerar o relatório!!!');
+            console.error('Ocorreu o seguinte erro:', err)
+            req.flash('error_msg', 'Ocorreu um erro ao gerar o relatório!!!')
         } 
     });
-
-
 
 //Exportando módulo
     module.exports = router
