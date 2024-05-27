@@ -29,4 +29,5 @@ Colocar mensagens flash onde está marcad- feito(26/05)
 Alterar Chamados;
 Registrar Chamados; feitp - (26/05)
 -Fazer a rota dos admin para fechar chamados abertos!
+-Fazer rota para filtragem de chamados por prioridade e ocorrência
 ==================================================================
