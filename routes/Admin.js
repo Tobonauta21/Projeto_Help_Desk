@@ -64,11 +64,12 @@
                     Chamado.findAll().then((ocorrencias)=>{
                         res.render('admin/home',{ocorrencias:ocorrencias})
                     }).catch((erro)=>{
-                        //Colocar mensagem flash aqui
+                        req.flash('error_msg')
                         console.log('Ocorreu o seguinte erro->'+erro)
                     })
                 }catch(error){
-                    //Colocar mensagem flash aqui
+                    req.flash('error_msg','Faça login para ter acesso a plataforma!')
+                    res.redirect('/login')
                     console.log('erroraquió'+error)
                 }
             }else{
@@ -76,11 +77,21 @@
                 res.redirect('/login')
             }
         }).catch(err =>{
-            //Colocar mensagem flash aqui
+            req.flash('error_msg','Ocorreu um erro, tente novamente')
+            res.redirect('/login')
             console.log('erro aqui ó '+err)
         })
-        
-        
+    })
+
+    router.get('/home/:prio',(req,res)=>{
+
+        try{
+            Chamado.findAll({where:{prioridade:req.params.prio}}).then(ocorrencias=>{
+                res.render('admin/home',{ocorrencias:ocorrencias})
+            })
+        }catch(err){
+
+        }
     })
 
     router.get('/ocorrencia',(req,res)=>{

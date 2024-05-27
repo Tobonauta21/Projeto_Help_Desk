@@ -27,7 +27,7 @@ Colocar mensagens flash onde está marcad- feito(26/05)
 -Talvez fazer uma função de notificações para os adm 
 -Fazer front-end das seguintes páginas:
 Alterar Chamados;
-Registrar Chamados; feitp - (26/05)
+Registrar Chamados; feito - (26/05)
 -Fazer a rota dos admin para fechar chamados abertos!
--Fazer rota para filtragem de chamados por prioridade e ocorrência
+-Fazer rota para filtragem de chamados por prioridade e ocorrência - feito(prioridade 27/05)
 ==================================================================

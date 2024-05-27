@@ -1,7 +1,23 @@
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="/css/sidebar.css">
 {{>_sidebar}}
+<script>
+        function redirecionarPagina(selectObj) {
+            var url = selectObj.value;
+            if (url) {
+                window.location.href = url;
+            }
+        }
+</script>
+
+
 <div class="card-container">
+     <select onchange="redirecionarPagina(this)">
+        <option value="">Selecione a prioridade do chamado</option>
+        <option value="/admin/home/alta">Alta</option>
+        <option value="/admin/home/mediana">Média</option>
+        <option value="/admin/home/baixa">Baixa</option>
+</select>
     {{#each ocorrencias}}
     <div class="card">
         <img src="/img/logo.jpg" alt="">
