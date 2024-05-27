@@ -23,7 +23,7 @@ Colocar mensagens flash onde está marcad- feito(26/05)
 -Terminar a home do usuário- feito (26/05)
 -Fazer sistema de sessão (Sistema de sessão do admin feito)- feito (26/05)
 -Fazer as rotas para alterar os chamdos nos cards-feito (26/05)
--Gerar relatório em excel
+-Gerar relatório em excel feito - (27/05)
 -Talvez fazer uma função de notificações para os adm 
 -Fazer front-end das seguintes páginas:
 Alterar Chamados;
