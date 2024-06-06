@@ -70,6 +70,7 @@
                     empresa:urs.empresa,
                     codigo:req.body.ocorrencias,
                     status:'Aberto',
+                    descricao:req.body.descricao,
                     prioridade:req.body.prioridade,
                     ocorrenciaId:req.body.ocorrencias
                 }).then(()=>{
@@ -77,9 +78,11 @@
                     res.redirect('/user/home')
                 }).catch(err=>{    
                 req.flash('error_msg','Ocorreu um erro, por favor tente novamente!')
+                console.log(err)
                 res.redirect('/login')
                 })
             }).catch(err=>{
+                console.log(err)
                 req.flash('error_msg','Ocorreu um erro, por favor tente novamente!')
                 res.redirect('/login')
             })
@@ -179,6 +182,12 @@
             res.redirect(`/alter/${callId}`);
         }
     });
+
+    router.get('/logoff',(req,res)=>{
+        req.session.nuserId = null
+        req.flash('success_msg','Logoff relizado com sucesso')
+        res.redirect('/login')
+    })
     
     // Função para adicionar registro ao arquivo Excel
     /*async function adicionarRegistroAoExcel(filePath, ...dados) {

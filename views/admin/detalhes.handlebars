@@ -1,6 +1,12 @@
-{{#with call}}
-    {{nomeUser}}
-    {{empresa}}
-    {{status}}
-    {{prioridade}}
-{{/with}}
+{{>_sidebar}}
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="/css/detalhes.css">
+<br><br><br><br><br><div class="container">
+    <div class="item"><h1><i class='bx bxs-user' ></i>  Nome do usuário: {{call.nomeUser}}</h1></div>
+    <div class="item">{{call.empresa}}</div>
+    <div class="item">{{call.descricao}}</div>
+    <div class="item">{{call.status}}</div>
+    <div class="item">{{call.prioridade}}</div>
+    <div class="item">{{occ.status}}</div>
+</div>
+<script src="/js/scriptSideBar.js"></script>

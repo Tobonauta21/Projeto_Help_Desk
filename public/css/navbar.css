@@ -19,8 +19,13 @@ nav{
     width: 100%;
 }
 
+#logo a {
+    text-decoration: none;
+    color: white;
+}
+
 #logo{
-    color: wheat;
+    color: white;
     font-size: 45px;
     line-height: 80px;
     padding: 0 100px;
