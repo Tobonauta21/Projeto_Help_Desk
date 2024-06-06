@@ -180,5 +180,29 @@
         } 
     });
 
+    router.get('/close/:id',async (req,res)=>{
+        await Chamado.findOne({where:{id:req.params.id}}).then(call=>{
+                call.update({status:'Fechado'},{where:{id:req.params.id}})
+
+                req.flash('success_msg','Chamado fechado')
+                res.redirect('/admin/home')
+        }).catch(err=>{
+            req.flash('error_msg','Ocoreu um erro')
+            res.redirect('/admin/home')
+            console.log(err)
+        })
+    })
+
+    router.get('/detail/:id',async (req,res)=>{
+        await Chamado.findOne({where:{id:req.params.id}}).then(call=>{
+            res.render('admin/detalhes',{call:call})
+        }).catch(err=>{
+            req.flash('error_msg','Ocorreu um erro')
+            res.redirect('/admin/home')
+            console.log(err)
+        })
+    
+    })
+
 //Exportando módulo
     module.exports = router

@@ -9,15 +9,17 @@
             }
         }
 </script>
-
-
-<div class="card-container">
-     <select onchange="redirecionarPagina(this)">
+    <div class="select">
+        <br><br><br><br><select onchange="redirecionarPagina(this)" id= "filtro">
         <option value="">Selecione a prioridade do chamado</option>
         <option value="/admin/home/alta">Alta</option>
-        <option value="/admin/home/mediana">Média</option>
+        <option value="/admin/home/media">Média</option>
         <option value="/admin/home/baixa">Baixa</option>
-</select>
+    </select>
+    </div>
+         
+<div class="card-container">
+
     {{#each ocorrencias}}
     <div class="card">
         <img src="/img/logo.jpg" alt="">
@@ -27,8 +29,8 @@
             <p><i class='bx bxs-info-circle'></i>Proridade:{{prioridade}}</p>
             <p><i class='bx bx-barcode'></i>Código:{{codigo}}</p>
             <p><i class='bx bx-stats'></i>Estado:{{status}}</p>
-            <a href="" class="btn">Fechar Chamado</a><br>
-            <a href="" class="btn">Alterar Chamado</a>
+            <a href="/admin/close/{{id}}" class="btn">Fechar Chamado</a><br>
+            <a href="/admin/detail/{{id}}" class="btn">Checar Detalhes</a>
         </div>
     </div> 
     {{/each}} 
