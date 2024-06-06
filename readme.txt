@@ -29,7 +29,8 @@ Colocar mensagens flash onde está marcad- feito(26/05)
 Alterar Chamados;
 Registrar Chamados; feito - (26/05)
 -Fazer a rota dos admin para fechar chamados abertos! - feito(06/06)
--Fazer rota para filtragem de chamados por prioridade e ocorrência - feito(prioridade 27/05)]
+-Fazer rota para filtragem de chamados por prioridade e ocorrência - feito(prioridade 27/05)
+-Adicionado descrição ao chamados - feito(06/06)
 -Fazer função de busca de usuários.
 -Fazer função de busca de chamados.
 -Upgrade front-end

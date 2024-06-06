@@ -143,7 +143,9 @@
     })
 
     router.get('/logoff',(req,res)=>{
-
+        req.session.userId = null
+        req.flash('success_msg','Logoff relizado com sucesso!')
+        res.redirect('/login')
     })
 
     router.get('/gerar_relatorio', async (req, res) => {
@@ -194,14 +196,17 @@
     })
 
     router.get('/detail/:id',async (req,res)=>{
-        await Chamado.findOne({where:{id:req.params.id}}).then(call=>{
-            res.render('admin/detalhes',{call:call})
-        }).catch(err=>{
+        
+        try{
+            const call = await Chamado.findOne({where:{id:req.params.id}})
+            const occ = await Ocorrencia.findOne({where:{id:call.ocorrenciaId}})
+
+            res.render('admin/detalhes',{call:call,occ:occ})
+        }catch(err){
             req.flash('error_msg','Ocorreu um erro')
             res.redirect('/admin/home')
-            console.log(err)
-        })
-    
+        }
+       
     })
 
 //Exportando módulo
