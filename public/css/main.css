@@ -2,3 +2,15 @@
 *{
     font-family: "Ubuntu", sans-serif;
 }
+
+#filtro{
+    height: 40px;
+    border-radius: 30px;
+    outline: transparent;
+    cursor: pointer;
+}
+
+.select{
+    height: 30px;
+    text-align: center;
+}
