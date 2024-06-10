@@ -172,7 +172,7 @@
             })
     
             res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-            res.setHeader('Content-Disposition', 'attachment; filename="ocorrencias.xlsx"')
+            res.setHeader('Content-Disposition', 'attachment; filename="Relatorio.xlsx"')
             await workbook.xlsx.write(res)
     
             req.flash('success_msg', 'Relatório gerado com sucesso!')
@@ -207,6 +207,10 @@
             res.redirect('/admin/home')
         }
        
+    })
+
+    router.get('/dashboard',(req,res)=>{
+        res.render('src/dashboard')
     })
 
 //Exportando módulo

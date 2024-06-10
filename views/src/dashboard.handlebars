@@ -1,0 +1,12 @@
+{{>_sidebar}}
+<br><br><br><iframe title="relatório" width="1024" height="1060" src="https://app.powerbi.com/view?r=eyJrIjoiMmJhNGIyOWMtNTY1NS00ODNmLTlhN2UtZTQ4NDQ4ZTVjMjNmIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+<script>
+    const navBar = document.querySelector('nav'),
+          menuBtns = document.querySelectorAll('.menu-icon')
+
+    menuBtns.forEach((menuBtn)=>{
+        menuBtn.addEventListener('click',()=>{
+            navBar.classList.toggle('open')
+        })
+    })
+</script>
