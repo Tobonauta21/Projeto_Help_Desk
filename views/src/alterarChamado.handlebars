@@ -1,13 +1,14 @@
-
+{{>_navbar}}
     {{#with call}}
     <h1>Detalhes do Chamado</h1>
     <p><strong>Nome do Usuário:</strong> {{nomeUser}}</p>
     <p><strong>Empresa:</strong> {{empresa}}</p>
+    <p><strong>Descrição sobre o Chamado:</strong>{{descricao}}</p>
     <p><strong>Status:</strong> {{status}}</p>
     <p><strong>ID do Chamado:</strong> {{id}}</p>
     
     <form action="/user/altercall/{{id}}" method="post">
-        <label for="ocorrencias">Ocorrências:</label>
+        <label for="ocorrencias"><strong>Ocorrências:</strong></label>
         <select id="ocorrencias" name="ocorrencias">
             {{#each ../ocr}} 
                 <option value="{{id}}">{{status}}</option>
