@@ -12,7 +12,7 @@ const db = require('./Conn')
     })
 
 //Sincronizando a tabela com o banco 
-    //users.sync({force:true})
+    users.sync()
 
 //Exportando módulos
     module.exports = users

@@ -25,7 +25,11 @@
                 erros.push({msg:'Senha muito curta'})
             }
 
+            if(req.body.confirm !='admin'){
+                erros.push({msg:'Código de confirmação inválido'})
+            }
             if(erros.length > 0){
+                console.log(erros)
                 req.flash('error_msg','Erro ao criar perfil adm'+erros)
                 res.render('admin/register',{error:erros})
             }else{

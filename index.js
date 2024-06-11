@@ -38,7 +38,7 @@
         app.use(express.static(path.join(__dirname,'public')))
 //Rotas
     app.get('/',(req,res)=>{
-        res.render('index')
+        res.redirect('/login')
     })
 
     app.get('/register',(req,res)=>{

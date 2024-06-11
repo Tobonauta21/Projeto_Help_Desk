@@ -7,6 +7,6 @@
     })
 
 //Sincronização
-    //Ocorrencia.sync({force:true})
+    Ocorrencia.sync()
 //Exportando a tabela
     module.exports = Ocorrencia

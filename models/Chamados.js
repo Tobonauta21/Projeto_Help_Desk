@@ -14,6 +14,6 @@
     Call.belongsTo(Ocorrencia,{foreigKey:'ocorrenciaId'})
 
 //Sincronização
-    //Call.sync({force:true})
+    Call.sync()
 //Exportando a tabela
     module.exports = Call
