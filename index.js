@@ -1,4 +1,3 @@
-
 //Importando módulos
     const express = require('express')
     const app = new express()
@@ -9,6 +8,7 @@
     const user = require('./routes/User')
     const session = require('express-session')
     const flash = require('connect-flash')
+
 //Configurações
     //Session
         app.use(session({
@@ -36,6 +36,7 @@
         app.set('view engine', 'handlebars');
     //Public
         app.use(express.static(path.join(__dirname,'public')))
+
 //Rotas
     app.get('/',(req,res)=>{
         res.redirect('/login')
@@ -50,6 +51,7 @@
     })
     app.use('/admin',admin)
     app.use('/user',user)
+    
 //Subindo o servidor
     app.listen(3000,(req,res)=>{
         console.log('Servidor ouvindo em localhost:3000')

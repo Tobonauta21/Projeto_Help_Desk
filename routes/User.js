@@ -63,6 +63,25 @@
     })
 
     router.post('/regis_call', async (req, res) => {
+
+        Chamado.create({
+            nomeUser:'Usuário genérico',
+            empresa:'Empresa genérica',
+            codigo:req.body.ocorrencias,
+            status:'Aberto',
+            descricao:req.body.descricao,
+            prioridade:req.body.prioridade,
+            ocorrenciaId:req.body.ocorrencias
+        }).then(()=>{
+            req.flash('success_msg','Chamado criado com sucesso!')
+            res.redirect('/user/home')
+        }).catch(err=>{    
+        req.flash('error_msg','Ocorreu um erro, por favor tente novamente!')
+        console.log(err)
+        res.redirect('/login')
+        })
+        
+        /*Registro de um usuário autenticado
         try{
              Usuario.findOne({where:{id:req.session.nuserId}}).then(urs=>{
                 Chamado.create({
@@ -89,7 +108,7 @@
         }catch(err){
             req.flash('error_msg','Ocorreu um erro, por favor tente novamente!')
             res.redirect('/login')
-        }
+        }*/
         
     })
 
@@ -123,7 +142,15 @@
     })
 
     router.get('/home',(req,res)=>{
-        Usuario.findOne({where:{id:req.session.nuserId}}).then(usr=>{
+        Chamado.findAll().then(call=>{
+            res.render('src/home',{call:call})
+        }).catch(err=>{
+            req.flash('error_msg','Ocorreu um erro ao acessar a plataforma!')
+            res.redirect('/login')
+        })
+
+        //Código para sessão e autenticação de usuário
+        /*Usuario.findOne({where:{id:req.session.nuserId}}).then(usr=>{
             if(usr){
                 try{
                     Chamado.findAll({where:{nomeUser:usr.nome}}).then(call=>{
@@ -143,7 +170,7 @@
         }).catch(err=>{
             req.flash('error_msg','Ocorreu um erro ao acessar a plataforma!')
             res.redirect('/login')
-        })
+        })*/
 
     })
     

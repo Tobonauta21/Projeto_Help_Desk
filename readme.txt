@@ -1,8 +1,8 @@
 ==========ATENÇÃO==============================================
-Esté é o projeto de um help desk que tem a função de 
-registrar chamados de ajuda.
-Tem um crossover com PowerBi para mostrar gráficos de
- todos os chamados
+Eu preferi por deixar o sistema todo aberto, para que não haja
+a necessidade de ter um cadastro para acessar o sistema, ele
+está todo liberado.
+a navbar leva a todas as telas do sistema
 ===============================================================
 
 =======================================TUTORIAL!!!!====================================

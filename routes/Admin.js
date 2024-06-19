@@ -62,8 +62,14 @@
 
     router.get('/home',(req,res)=>{
 
-        Admin.findOne({where:{id:req.session.userId}}).then(admin=>{
-            if(admin){
+        Chamado.findAll().then((ocorrencias)=>{
+            res.render('admin/home',{ocorrencias:ocorrencias})
+        }).catch((erro)=>{
+            req.flash('error_msg')
+            console.log('Ocorreu o seguinte erro->'+erro)
+        })
+        //Parte do código para funcionar como sessão, e não deixar qualquer usuário entrar
+            /*if(admin){
                 try{
                     Chamado.findAll().then((ocorrencias)=>{
                         res.render('admin/home',{ocorrencias:ocorrencias})
@@ -84,7 +90,7 @@
             req.flash('error_msg','Ocorreu um erro, tente novamente')
             res.redirect('/login')
             console.log('erro aqui ó '+err)
-        })
+        })*/
     })
 
     router.get('/home/:prio',(req,res)=>{
@@ -94,7 +100,8 @@
                 res.render('admin/home',{ocorrencias:ocorrencias})
             })
         }catch(err){
-
+            res.redirect('/login')
+            req.flash('error_msg','Ococrreu um erro')
         }
     })
 
