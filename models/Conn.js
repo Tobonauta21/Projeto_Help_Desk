@@ -6,7 +6,7 @@
     //Caso estivar usando mysql, comentar essa função
     const sequelize = new Sequelize({
         dialect:'sqlite',
-        storage:'./helpdesk.db',
+        storage:'/home/igor/Documentos/Estudos/Express/ProjetoHelpDesk/helpdesk.db',
     })
     
     //E descomentar essa função, e criar o banco de dados
